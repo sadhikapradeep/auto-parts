@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Checkout</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <style>
+    .payment-method-btn {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+    .active {
+      border: 2px solid green;
+      background-color: #e7fce7;
+    }
+    #qrSection {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+<div class="container my-5">
+  <div class="row">
+    <!-- Left side -->
+    <div class="col-md-7">
+      <h4>Email or Phone</h4>
+      <input type="email" class="form-control mb-3" placeholder="Email" id="email">
+
+      <h5 class="mt-4">Delivery</h5>
+      <form id="deliveryForm">
+        <div class="mb-3">
+          <label>Country/Region</label>
+          <select class="form-select">
+            <option selected>India</option>
+          </select>
+        </div>
+
+        <div class="row g-2">
+          <div class="col">
+            <input type="text" class="form-control" placeholder="First name">
+          </div>
+          <div class="col">
+            <input type="text" class="form-control" placeholder="Last name">
+          </div>
+        </div>
+
+        <input type="text" class="form-control my-3" placeholder="Address">
+        <input type="text" class="form-control mb-3" placeholder="Apartment (optional)">
+
+        <div class="row g-2">
+          <div class="col-md-4">
+            <input type="text" class="form-control" placeholder="City">
+          </div>
+          <div class="col-md-4">
+            <select class="form-select">
+              <option selected disabled>Select State</option>
+              <!-- states omitted for brevity -->
+              <option>Kerala</option>
+              <option>Tamil Nadu</option>
+              <option>Andhra Pradesh</option>
+              <option>Arunachal Pradesh</option>
+              <option>Assam</option>
+              <option>Bihar</option>
+              <option>Chhattisgarh</option>
+              <option>Goa</option>
+              <option>Gujarat</option>
+              <option>Haryana</option>
+              <option>Himachal Pradesh</option>
+              <option>Jharkhand</option>
+              <option>Karnataka</option>
+              <option>Kerala</option>
+              <option>Madhya Pradesh</option>
+              <option>Maharashtra</option>
+              <option>Manipur</option>
+              <option>Meghalaya</option>
+              <option>Mizoram</option>
+              <option>Nagaland</option>
+              <option>Odisha</option>
+              <option>Punjab</option>
+              <option>Rajasthan</option>
+              <option>Sikkim</option>
+              <option>Tamil Nadu</option>
+              <option>Telangana</option>
+              <option>Tripura</option>
+              <option>Uttar Pradesh</option>
+              <option>Uttarakhand</option>
+              <option>West Bengal</option>
+              <option>Andaman and Nicobar Islands</option>
+              <option>Chandigarh</option>
+              <option>Dadra and Nagar Haveli and Daman and Diu</option>
+              <option>Delhi</option>
+              <option>Lakshadweep</option>
+              <option>Puducherry</option>
+              <option>Ladakh</option>
+              <option>Jammu and Kashmir</option>
+            </select>
+          </div>
+          <div class="col-md-4">
+            <input type="text" class="form-control" placeholder="PIN code">
+          </div>
+        </div>
+
+        <input type="text" class="form-control mt-3" placeholder="Phone">
+      </form>
+
+      <button class="btn btn-primary mt-4" onclick="showPaymentMethods()">Continue to Payment</button>
+
+      <!-- Payment Methods -->
+      <div id="paymentSection" class="mt-5 d-none">
+        <h4>Choose Payment Method</h4>
+        <input type="hidden" id="selectedPaymentMethod" />
+
+        <button class="btn btn-outline-dark payment-method-btn" onclick="selectPayment(this, 'UPI')">Pay via UPI</button>
+        <button class="btn btn-outline-dark payment-method-btn" onclick="selectPayment(this, 'Credit Card')">Credit/Debit Card</button>
+        <button class="btn btn-outline-dark payment-method-btn" onclick="selectPayment(this, 'Net Banking')">Net Banking</button>
+        <button class="btn btn-outline-dark payment-method-btn" onclick="selectPayment(this, 'Cash on Delivery')">Cash on Delivery</button>
+
+        <button class="btn btn-success mt-3" onclick="submitPayment()">Proceed</button>
+
+        <!-- UPI QR -->
+        <div id="qrSection" class="mt-4 text-center">
+          <h5>Scan QR to Pay</h5>
+          <img src="images/qr.png" alt="UPI QR" style="width: 200px;" class="mb-3">
+          <br>
+          <button class="btn btn-warning" onclick="markPaid()">I have completed the payment</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right side: Cart Summary -->
+    <div class="col-md-5 bg-light p-4 rounded" id="cart-summary">
+      <div class="d-flex mb-3">
+        <img src="/images/card6.jpg" alt="V3 COMBO" width="80" class="me-3">
+        <div>
+          <strong>H2 FULL KIT</strong><br>
+          ₹<span id="unitPrice">5,200.00</span>
+        </div>
+      </div>
+      <hr>
+      <p>Subtotal: <strong>₹<span id="subtotal">5,200.00</span></strong></p>
+      <p>Taxes: ₹<span id="taxes">270.00</span></p>
+      <hr>
+      <h5>Total: <strong>₹<span id="total">5,200.00</span></strong></h5>
+    </div>
+  </div>
+</div>
+
+<!-- Hidden email form -->
+<form id="emailForm" action="https://formsubmit.co/sadhikapradeep62@gmail.com" method="POST">
+  <input type="hidden" name="user_name" id="user_name">
+  <input type="hidden" name="user_email" id="user_email">
+  <input type="hidden" name="product_name" value="V3 COMBO">
+  <input type="hidden" name="total_price" value="2900.00">
+  <input type="hidden" name="payment_method" id="payment_method">
+  <input type="hidden" name="_next" value="confirmation.html">
+</form>
+
+<script>
+  const urlParams = new URLSearchParams(window.location.search);
+  const qty = parseInt(urlParams.get('qty')) || 1;
+  const unitPrice = 5200;
+  const taxPerItem = 270;
+
+  const subtotal = unitPrice * qty;
+  const tax = taxPerItem * qty;
+  const total = subtotal;
+
+  document.getElementById("subtotal").textContent = subtotal.toFixed(2);
+  document.getElementById("taxes").textContent = tax.toFixed(2);
+  document.getElementById("total").textContent = total.toFixed(2);
+  document.querySelector("input[name='total_price']").value = total.toFixed(2);
+
+  function showPaymentMethods() {
+    document.getElementById("paymentSection").classList.remove("d-none");
+    document.getElementById("paymentSection").scrollIntoView({ behavior: "smooth" });
+  }
+
+  function selectPayment(btn, method) {
+    document.querySelectorAll(".payment-method-btn").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    document.getElementById("selectedPaymentMethod").value = method;
+    document.getElementById("qrSection").style.display = method === "UPI" ? "block" : "none";
+  }
+
+  function markPaid() {
+    alert("UPI Payment confirmed!");
+    submitPayment();
+  }
+
+  function submitPayment() {
+    const form = document.getElementById("deliveryForm");
+    const inputs = form.querySelectorAll("input, select");
+
+    const email = document.getElementById("email").value;
+    const firstName = inputs[1].value;
+    const lastName = inputs[2].value;
+
+    document.getElementById("user_name").value = `${firstName} ${lastName}`;
+    document.getElementById("user_email").value = email;
+    document.getElementById("payment_method").value = document.getElementById("selectedPaymentMethod").value;
+
+    document.getElementById("emailForm").submit();
+  }
+</script>
+
+</body>
+</html>
