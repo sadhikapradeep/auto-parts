@@ -1,22 +1,24 @@
+// server.js
 const express = require('express');
 const nodemailer = require('nodemailer');
 const cors = require('cors');
+
 const app = express();
 const PORT = 3000;
 
 app.use(cors());
 app.use(express.json());
 
-// Setup transporter
+// Setup transporter (Gmail with App Password)
 const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
     user: 'sadhikapradeep62@gmail.com',
-    pass: 'fjrkwbvsznxlgvao' // Use your Gmail App Password
+    pass: 'fjrkwbvsznxlgvao' // <-- Replace with your app password
   }
 });
 
-// Email sending route
+// Route to send email
 app.post('/send-email', (req, res) => {
   const data = req.body;
 
@@ -45,7 +47,7 @@ Amount: ₹1,770.00`
   });
 });
 
-// Start server
+// Start the server
 app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+  console.log(`✅ Server running at http://localhost:${PORT}`);
 });

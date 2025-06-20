@@ -123,13 +123,8 @@
       font-weight: 700;
     }
 
-    @media (max-width: 768px) {
-      .top-nav {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-    .main-menu {
+   /* Base main-menu styles */
+.main-menu {
   background-color: #f7f3f3cb;
   display: flex;
   flex-wrap: wrap;
@@ -157,17 +152,36 @@
   min-width: 100px;
 }
 
+/* Top-nav responsive behavior */
 @media (max-width: 768px) {
-  .main-menu {
+  .top-nav {
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
+  }
+
+  /* Make main menu a 3x4 grid */
+  .main-menu {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    justify-items: center;
+    text-align: center;
+    padding: 10px;
   }
 
   .main-menu .menu-links {
-    justify-content: center;
-    gap: 10px;
+    grid-column: 1 / -1; /* Span full width if needed */
+    display: contents; /* Flatten nested flex container if used */
   }
-}
+
+  .main-menu a {
+    min-width: unset;
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+  }
+
+
 
 
       .cards {
@@ -181,7 +195,7 @@
 
   <!-- Top Navigation -->
   <div class="top-nav">
-    <div class="logo">Neptune <small>AUTO-PARTS</small></div>
+    <div class="logo">NEPTUNE <small>AUTO-PARTS</small></div>
     <div class="icon-bar">
       <span><i class="fa fa-user"></i></span>
       <span><i class="fa fa-shopping-cart"></i></span>
@@ -197,13 +211,12 @@
     <a href="underbelly.html">UNDERBELLY</a>
     <a href="seatcowl.html">SEAT COWL</a>
     <a href="mudguard.html">MUDGUARD</a>
-    <a href="x2kit.html">X2 KITS</a>
-    <a href="x2sekit.html">X2 SE KITS</a>
     <a href="sidekit.html">SIDE KITS</a>
     <a href="tailkit.html">TAIL KITS</a>
     <a href="exhaust.html">EXHAUST</a>
     <a href="bendpipe.html">BENDPIPES</a>
     <a href="visor.html">VISORS</a>
+    <a href="tank.html">TANKS</a>
   </div>
 </div>
 
@@ -248,16 +261,10 @@
     <div class="card"><img src="../images/card1.jpg" class="card-img-top"><div class="card-body"><a href="card1.html" class="btn btn-danger w-100">Order Now</a></div></div>
     <div class="card"><img src="../images/card2.jpg" class="card-img-top"><div class="card-body"><a href="card2.html" class="btn btn-danger w-100">Order Now</a></div></div>
     <div class="card"><img src="../images/card3.jpg" class="card-img-top"><div class="card-body"><a href="card3.html" class="btn btn-danger w-100">Order Now</a></div></div>
-    <div class="card"><img src="../images/card4.jpg" class="card-img-top"><div class="card-body"><a href="card4.html" class="btn btn-danger w-100">Order Now</a></div></div>
-
-    <div class="card"><img src="../images/card5.jpg" class="card-img-top"><div class="card-body"><a href="card5.html" class="btn btn-danger w-100">Order Now</a></div></div>
-    <div class="card"><img src="../images/card6.jpg" class="card-img-top"><div class="card-body"><a href="card6.html" class="btn btn-danger w-100">Order Now</a></div></div>
-    <div class="card"><img src="../images/card7.jpg" class="card-img-top"><div class="card-body"><a href="card7.html" class="btn btn-danger w-100">Order Now</a></div></div>
-    <div class="card"><img src="../images/card8.jpg" class="card-img-top"><div class="card-body"><a href="card8.html" class="btn btn-danger w-100">Order Now</a></div></div>
+    <div class="card"><img src="../images/card10.jpg" class="card-img-top"><div class="card-body"><a href="card10.html" class="btn btn-danger w-100">Order Now</a></div></div>
 
     <div class="card"><img src="../images/card9.jpg" class="card-img-top"><div class="card-body"><a href="card9.html" class="btn btn-danger w-100">Order Now</a></div></div>
-    <div class="card"><img src="../images/card10.jpg" class="card-img-top"><div class="card-body"><a href="card10.html" class="btn btn-danger w-100">Order Now</a></div></div>
-    <div class="card"><img src="../images/card11.jpg" class="card-img-top"><div class="card-body"><a href="card11.html" class="btn btn-danger w-100">Order Now</a></div></div>
+    <div class="card"><img src="../images/card7.jpg" class="card-img-top"><div class="card-body"><a href="card7.html" class="btn btn-danger w-100">Order Now</a></div></div>
     <div class="card"><img src="../images/card12.jpg" class="card-img-top"><div class="card-body"><a href="card12.html" class="btn btn-danger w-100">Order Now</a></div></div>
   
     <div class="card"><img src="../images/card13.jpg" class="card-img-top"><div class="card-body"><a href="card13.html" class="btn btn-danger w-100">Order Now</a></div></div>

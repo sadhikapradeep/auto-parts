@@ -85,11 +85,8 @@
               <option>Uttar Pradesh</option>
               <option>Uttarakhand</option>
               <option>West Bengal</option>
-              <option>Andaman and Nicobar Islands</option>
               <option>Chandigarh</option>
-              <option>Dadra and Nagar Haveli and Daman and Diu</option>
               <option>Delhi</option>
-              <option>Lakshadweep</option>
               <option>Puducherry</option>
               <option>Ladakh</option>
               <option>Jammu and Kashmir</option>
@@ -111,16 +108,13 @@
         <input type="hidden" id="selectedPaymentMethod" />
 
         <button class="btn btn-outline-dark payment-method-btn" onclick="selectPayment(this, 'UPI')">Pay via UPI</button>
-        <button class="btn btn-outline-dark payment-method-btn" onclick="selectPayment(this, 'Credit Card')">Credit/Debit Card</button>
-        <button class="btn btn-outline-dark payment-method-btn" onclick="selectPayment(this, 'Net Banking')">Net Banking</button>
-        <button class="btn btn-outline-dark payment-method-btn" onclick="selectPayment(this, 'Cash on Delivery')">Cash on Delivery</button>
 
         <button class="btn btn-success mt-3" onclick="submitPayment()">Proceed</button>
 
         <!-- UPI QR -->
         <div id="qrSection" class="mt-4 text-center">
           <h5>Scan QR to Pay</h5>
-          <img src="images/qr.png" alt="UPI QR" style="width: 200px;" class="mb-3">
+          <img src="../images/qr.jpg" alt="UPI QR" style="width: 200px;" class="mb-3">
           <br>
           <button class="btn btn-warning" onclick="markPaid()">I have completed the payment</button>
         </div>
@@ -130,17 +124,17 @@
     <!-- Right side: Cart Summary -->
     <div class="col-md-5 bg-light p-4 rounded" id="cart-summary">
       <div class="d-flex mb-3">
-        <img src="/images/underbelly1.jpg" alt="NS COMBO" width="80" class="me-3">
+        <img src="../images/underbelly1.jpg" alt="NS COMBO" width="80" class="me-3">
         <div>
-          <strong>NS COMBO</strong><br>
-          ₹<span id="unitPrice">2,400.00</span>
+          <strong></strong><br>
+          ₹<span id="unitPrice">1,300.00</span>
         </div>
       </div>
       <hr>
-      <p>Subtotal: <strong>₹<span id="subtotal">2,400.00</span></strong></p>
-      <p>Taxes: ₹<span id="taxes">270.00</span></p>
+      <p>Subtotal: <strong>₹<span id="subtotal">1,300.00</span></strong></p>
+      <p>Shipping charge: ₹<span id="taxes">200.00</span></p>
       <hr>
-      <h5>Total: <strong>₹<span id="total">2,400.00</span></strong></h5>
+      <h5>Total: <strong>₹<span id="total">1,500.00</span></strong></h5>
     </div>
   </div>
 </div>
@@ -149,26 +143,23 @@
 <form id="emailForm" action="https://formsubmit.co/sadhikapradeep62@gmail.com" method="POST">
   <input type="hidden" name="user_name" id="user_name">
   <input type="hidden" name="user_email" id="user_email">
-  <input type="hidden" name="product_name" value="V3 COMBO">
-  <input type="hidden" name="total_price" value="2900.00">
+  <input type="hidden" name="product_name" value="R15 V3 UNDERBELLY 4.0">
+  <input type="hidden" name="total_price" value="1500.00">
   <input type="hidden" name="payment_method" id="payment_method">
   <input type="hidden" name="_next" value="confirmation.html">
 </form>
 
+
 <script>
-  const urlParams = new URLSearchParams(window.location.search);
-  const qty = parseInt(urlParams.get('qty')) || 1;
-  const unitPrice = 2400;
-  const taxPerItem = 270;
+  const qty = 1;
+  const unitPrice = 1300;
+  const tax = 200;
+  const total = unitPrice + tax;
 
-  const subtotal = unitPrice * qty;
-  const tax = taxPerItem * qty;
-  const total = subtotal;
-
-  document.getElementById("subtotal").textContent = subtotal.toFixed(2);
+  document.getElementById("subtotal").textContent = unitPrice.toFixed(2);
   document.getElementById("taxes").textContent = tax.toFixed(2);
   document.getElementById("total").textContent = total.toFixed(2);
-  document.querySelector("input[name='total_price']").value = total.toFixed(2);
+  document.getElementById("total_price").value = total.toFixed(2);
 
   function showPaymentMethods() {
     document.getElementById("paymentSection").classList.remove("d-none");
@@ -188,12 +179,14 @@
   }
 
   function submitPayment() {
-    const form = document.getElementById("deliveryForm");
-    const inputs = form.querySelectorAll("input, select");
+    const firstName = document.getElementById("firstName").value.trim();
+    const lastName = document.getElementById("lastName").value.trim();
+    const email = document.getElementById("email").value.trim();
 
-    const email = document.getElementById("email").value;
-    const firstName = inputs[1].value;
-    const lastName = inputs[2].value;
+    if (!firstName || !email) {
+      alert("Please enter required details before proceeding.");
+      return;
+    }
 
     document.getElementById("user_name").value = `${firstName} ${lastName}`;
     document.getElementById("user_email").value = email;

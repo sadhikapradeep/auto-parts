@@ -157,19 +157,15 @@
 </form>
 
 <script>
-  const urlParams = new URLSearchParams(window.location.search);
-  const qty = parseInt(urlParams.get('qty')) || 1;
-  const unitPrice = 2300;
-  const taxPerItem = 270;
+  const qty = 1;
+  const unitPrice = 2900;
+  const tax = 200;
+  const total = unitPrice + tax;
 
-  const subtotal = unitPrice * qty;
-  const tax = taxPerItem * qty;
-  const total = subtotal;
-
-  document.getElementById("subtotal").textContent = subtotal.toFixed(2);
+  document.getElementById("subtotal").textContent = unitPrice.toFixed(2);
   document.getElementById("taxes").textContent = tax.toFixed(2);
   document.getElementById("total").textContent = total.toFixed(2);
-  document.querySelector("input[name='total_price']").value = total.toFixed(2);
+  document.getElementById("total_price").value = total.toFixed(2);
 
   function showPaymentMethods() {
     document.getElementById("paymentSection").classList.remove("d-none");
@@ -189,12 +185,14 @@
   }
 
   function submitPayment() {
-    const form = document.getElementById("deliveryForm");
-    const inputs = form.querySelectorAll("input, select");
+    const firstName = document.getElementById("firstName").value.trim();
+    const lastName = document.getElementById("lastName").value.trim();
+    const email = document.getElementById("email").value.trim();
 
-    const email = document.getElementById("email").value;
-    const firstName = inputs[1].value;
-    const lastName = inputs[2].value;
+    if (!firstName || !email) {
+      alert("Please enter required details before proceeding.");
+      return;
+    }
 
     document.getElementById("user_name").value = `${firstName} ${lastName}`;
     document.getElementById("user_email").value = email;

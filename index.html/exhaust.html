@@ -9,40 +9,62 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
 
   <style>
-    .navbar-brand {
-      font-weight: bold;
-      color: #f20505 !important;
-    }
+   /* Navbar and card base styles remain the same */
+.navbar-brand {
+  font-weight: bold;
+  color: #f20505 !important;
+}
 
-    .nav-link {
-      color: black !important;
-      transition: background 0.3s, color 0.3s;
-      border-radius: 5px;
-    }
+.nav-link {
+  color: black !important;
+  transition: background 0.3s, color 0.3s;
+  border-radius: 5px;
+}
 
-    .nav-link:hover,
-    .nav-link:focus,
-    .nav-link:active {
-      background-color: #f20505;
-      color: white !important;
-    }
+.nav-link:hover,
+.nav-link:focus,
+.nav-link:active {
+  background-color: #f20505;
+  color: white !important;
+}
 
-    .card {
-      height: 100%;
-    }
+/* Updated card image styling */
+.card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: none;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  transition: transform 0.2s;
+}
+.card:hover {
+  transform: translateY(-5px);
+}
 
-    .card img {
-      height: auto;
-      max-height: 300px;
-      object-fit: contain;
-      padding: 10px;
-    }
+.card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  object-position: center;
+  border-bottom: 1px solid #eee;
+  background-color: #fafafa;
+}
 
-    .section-title {
-      text-align: center;
-      font-weight: bold;
-      padding: 20px 0;
-    }
+/* Make text content align nicely */
+.card-body {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.section-title {
+  text-align: center;
+  font-weight: bold;
+  padding: 20px 0;
+}
+
   </style>
 </head>
 <body>
@@ -69,13 +91,25 @@
     <h2 class="section-title">Exhaust Collection</h2>
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
       
+
+      <div class="col">
+        <div class="card text-center h-100 shadow">
+          <img src="/images/exhaust111.jpg" class="card-img-top" alt="Underbelly 1">
+          <div class="card-body">
+            <h5 class="card-title">₹4,500</h5>
+            <p class="card-text"></p>
+            <a href="exhaust111.html" class="btn btn-danger w-100">Buy Now</a>
+          </div>
+        </div>
+      </div>
+
       <div class="col">
         <div class="card text-center h-100 shadow">
           <img src="/images/exhaust1.jpg" class="card-img-top" alt="Underbelly 1">
           <div class="card-body">
             <h5 class="card-title">₹2,800</h5>
-            <p class="card-text">Aerodynamic design, DOT certified</p>
-            <a href="underbelly1-buy.html" class="btn btn-danger w-100">Buy Now</a>
+            <p class="card-text"></p>
+            <a href="exhaust1.html" class="btn btn-danger w-100">Buy Now</a>
           </div>
         </div>
       </div>
@@ -85,8 +119,8 @@
           <img src="/images/exhaust2.jpg" class="card-img-top" alt="Underbelly 2">
           <div class="card-body">
             <h5 class="card-title">₹2,550</h5>
-            <p class="card-text">Comfortable and durable for city rides</p>
-            <a href="checkout.html" class="btn btn-danger w-100">Buy Now</a>
+            <p class="card-text"></p>
+            <a href="exhaust2.html" class="btn btn-danger w-100">Buy Now</a>
           </div>
         </div>
       </div>
@@ -96,8 +130,8 @@
           <img src="/images/exhaust3.jpg" class="card-img-top" alt="Underbelly 3">
           <div class="card-body">
             <h5 class="card-title">₹3,150</h5>
-            <p class="card-text">With built-in sun visor and ventilation</p>
-            <a href="checkout.html" class="btn btn-danger w-100">Buy Now</a>
+            <p class="card-text"></p>
+            <a href="exhaust3.html" class="btn btn-danger w-100">Buy Now</a>
           </div>
         </div>
       </div>
@@ -107,8 +141,8 @@
           <img src="/images/exhaust4.jpg" class="card-img-top" alt="Underbelly 4">
           <div class="card-body">
             <h5 class="card-title">₹2,550</h5>
-            <p class="card-text">Durable and sporty look for high-speed use</p>
-            <a href="helmet1-buy.html" class="btn btn-danger w-100">Buy Now</a>
+            <p class="card-text"></p>
+            <a href="exhaust4.html" class="btn btn-danger w-100">Buy Now</a>
           </div>
         </div>
       </div>
@@ -118,8 +152,8 @@
           <img src="/images/exhaust5.jpg" class="card-img-top" alt="Underbelly 4">
           <div class="card-body">
             <h5 class="card-title">₹3,150</h5>
-            <p class="card-text">Durable and sporty look for high-speed use</p>
-            <a href="helmet1-buy.html" class="btn btn-danger w-100">Buy Now</a>
+            <p class="card-text"></p>
+            <a href="exhaust5.html" class="btn btn-danger w-100">Buy Now</a>
           </div>
         </div>
       </div>
@@ -129,8 +163,8 @@
           <img src="/images/exhaust6.jpg" class="card-img-top" alt="Underbelly 4">
           <div class="card-body">
             <h5 class="card-title">₹3,700</h5>
-            <p class="card-text">Durable and sporty look for high-speed use</p>
-            <a href="helmet1-buy.html" class="btn btn-danger w-100">Buy Now</a>
+            <p class="card-text"></p>
+            <a href="exhaust6.html" class="btn btn-danger w-100">Buy Now</a>
           </div>
         </div>
       </div>
@@ -139,9 +173,9 @@
         <div class="card text-center h-100 shadow">
           <img src="/images/exhaust7.jpg" class="card-img-top" alt="Underbelly 4">
           <div class="card-body">
-            <h5 class="card-title">₹7,000</h5>
-            <p class="card-text">Durable and sporty look for high-speed use</p>
-            <a href="helmet1-buy.html" class="btn btn-danger w-100">Buy Now</a>
+            <h5 class="card-title">₹2,600</h5>
+            <p class="card-text"></p>
+            <a href="exhaust7.html" class="btn btn-danger w-100">Buy Now</a>
           </div>
         </div>
       </div>
@@ -151,8 +185,8 @@
           <img src="/images/exhaust8.jpg" class="card-img-top" alt="Underbelly 4">
           <div class="card-body">
             <h5 class="card-title">₹2,000</h5>
-            <p class="card-text">Durable and sporty look for high-speed use</p>
-            <a href="helmet1-buy.html" class="btn btn-danger w-100">Buy Now</a>
+            <p class="card-text"></p>
+            <a href="exhaust8.html" class="btn btn-danger w-100">Buy Now</a>
           </div>
         </div>
       </div>
@@ -161,9 +195,9 @@
         <div class="card text-center h-100 shadow">
           <img src="/images/exhaust9.jpg" class="card-img-top" alt="Underbelly 4">
           <div class="card-body">
-            <h5 class="card-title">₹7,000</h5>
-            <p class="card-text">Durable and sporty look for high-speed use</p>
-            <a href="helmet1-buy.html" class="btn btn-danger w-100">Buy Now</a>
+            <h5 class="card-title">₹2,200</h5>
+            <p class="card-text"></p>
+            <a href="exhaust9.html" class="btn btn-danger w-100">Buy Now</a>
           </div>
         </div>
       </div>
@@ -172,9 +206,9 @@
         <div class="card text-center h-100 shadow">
           <img src="/images/exhaust10.jpg" class="card-img-top" alt="Underbelly 4">
           <div class="card-body">
-            <h5 class="card-title">₹1,800</h5>
-            <p class="card-text">Durable and sporty look for high-speed use</p>
-            <a href="helmet1-buy.html" class="btn btn-danger w-100">Buy Now</a>
+            <h5 class="card-title">₹2,200</h5>
+            <p class="card-text"></p>
+            <a href="exhaust10.html" class="btn btn-danger w-100">Buy Now</a>
           </div>
         </div>
       </div>
@@ -184,8 +218,8 @@
           <img src="/images/exhaust11.jpg" class="card-img-top" alt="Underbelly 4">
           <div class="card-body">
             <h5 class="card-title">₹3,000</h5>
-            <p class="card-text">Durable and sporty look for high-speed use</p>
-            <a href="helmet1-buy.html" class="btn btn-danger w-100">Buy Now</a>
+            <p class="card-text"></p>
+            <a href="exhaust11.html" class="btn btn-danger w-100">Buy Now</a>
           </div>
         </div>
       </div>
@@ -195,29 +229,20 @@
           <img src="/images/exhaust12.jpg" class="card-img-top" alt="Underbelly 4">
           <div class="card-body">
             <h5 class="card-title">₹3,000</h5>
-            <p class="card-text">Durable and sporty look for high-speed use</p>
-            <a href="helmet1-buy.html" class="btn btn-danger w-100">Buy Now</a>
+            <p class="card-text"></p>
+            <a href="exhaust12.html" class="btn btn-danger w-100">Buy Now</a>
           </div>
         </div>
       </div>
 
-      <div class="col">
-        <div class="card text-center h-100 shadow">
-          <img src="/images/exhaust13.jpg" class="card-img-top" alt="Underbelly 4">
-          <div class="card-body">
-            <h5 class="card-title">₹7,000</h5>
-            <p class="card-text">Durable and sporty look for high-speed use</p>
-            <a href="helmet1-buy.html" class="btn btn-danger w-100">Buy Now</a>
-          </div>
-        </div>
-      </div>
+     
       <div class="col">
         <div class="card text-center h-100 shadow">
           <img src="/images/exhaust14.jpg" class="card-img-top" alt="Underbelly 4">
           <div class="card-body">
-            <h5 class="card-title">₹7,000</h5>
-            <p class="card-text">Durable and sporty look for high-speed use</p>
-            <a href="helmet1-buy.html" class="btn btn-danger w-100">Buy Now</a>
+            <h5 class="card-title">₹3,000</h5>
+            <p class="card-text"></p>
+            <a href="exhaust13.html" class="btn btn-danger w-100">Buy Now</a>
           </div>
         </div>
       </div>
@@ -227,8 +252,8 @@
           <img src="/images/exhaust15.jpg" class="card-img-top" alt="Underbelly 4">
           <div class="card-body">
             <h5 class="card-title">₹3,300</h5>
-            <p class="card-text">Durable and sporty look for high-speed use</p>
-            <a href="helmet1-buy.html" class="btn btn-danger w-100">Buy Now</a>
+            <p class="card-text"></p>
+            <a href="exhaust15.html" class="btn btn-danger w-100">Buy Now</a>
           </div>
         </div>
       </div>
@@ -236,9 +261,9 @@
         <div class="card text-center h-100 shadow">
           <img src="/images/exhaust16.jpg" class="card-img-top" alt="Underbelly 4">
           <div class="card-body">
-            <h5 class="card-title">₹7,000</h5>
-            <p class="card-text">Durable and sporty look for high-speed use</p>
-            <a href="helmet1-buy.html" class="btn btn-danger w-100">Buy Now</a>
+            <h5 class="card-title">₹2,000</h5>
+            <p class="card-text"></p>
+            <a href="exhaust16.html" class="btn btn-danger w-100">Buy Now</a>
           </div>
         </div>
       </div>
@@ -246,9 +271,9 @@
         <div class="card text-center h-100 shadow">
           <img src="/images/exhaust17.jpg" class="card-img-top" alt="Underbelly 4">
           <div class="card-body">
-            <h5 class="card-title">₹7,000</h5>
-            <p class="card-text">Durable and sporty look for high-speed use</p>
-            <a href="helmet1-buy.html" class="btn btn-danger w-100">Buy Now</a>
+            <h5 class="card-title">₹2,000</h5>
+            <p class="card-text"></p>
+            <a href="exhaust17.html" class="btn btn-danger w-100">Buy Now</a>
           </div>
         </div>
       </div>
@@ -256,9 +281,9 @@
         <div class="card text-center h-100 shadow">
           <img src="/images/exhaust18.jpg" class="card-img-top" alt="Underbelly 4">
           <div class="card-body">
-            <h5 class="card-title">₹7,000</h5>
-            <p class="card-text">Durable and sporty look for high-speed use</p>
-            <a href="helmet1-buy.html" class="btn btn-danger w-100">Buy Now</a>
+            <h5 class="card-title">₹2,000</h5>
+            <p class="card-text"></p>
+            <a href="exhaust18.html" class="btn btn-danger w-100">Buy Now</a>
           </div>
         </div>
       </div>
