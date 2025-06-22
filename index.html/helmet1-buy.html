@@ -130,32 +130,35 @@
     <div class="row align-items-start">
       <!-- Helmet Image + Thumbnails -->
       <div class="col-lg-6 mb-4 mb-lg-0">
-        <img id="mainImage" src="/images/helmet1.jpg" alt="Helmet" class="helmet-img mb-3">
+        <img id="mainImage" src="../images/helmet1.jpg" alt="Helmet" class="helmet-img mb-3">
 
         <div class="d-flex gap-2 flex-wrap">
-          <img src="/images/helmet1.jpg" class="img-thumbnail" style="width: 100px; cursor: pointer;" onclick="updateMainImage(this)">
-          <img src="/images/helmet1a.jpg" class="img-thumbnail" style="width: 100px; cursor: pointer;" onclick="updateMainImage(this)">
-          <img src="/images/helmet1b.jpg" class="img-thumbnail" style="width: 100px; cursor: pointer;" onclick="updateMainImage(this)">
-          <img src="/images/helmet1c.jpg" class="img-thumbnail" style="width: 100px; cursor: pointer;" onclick="updateMainImage(this)">
+          <img src="../images/helmet1.jpg" class="img-thumbnail" style="width: 100px; cursor: pointer;" onclick="updateMainImage(this)">
+          <img src="../images/helmet1a.jpg" class="img-thumbnail" style="width: 100px; cursor: pointer;" onclick="updateMainImage(this)">
+          <img src="../images/helmet1b.jpg" class="img-thumbnail" style="width: 100px; cursor: pointer;" onclick="updateMainImage(this)">
+          <img src="../images/helmet1c.jpg" class="img-thumbnail" style="width: 100px; cursor: pointer;" onclick="updateMainImage(this)">
         </div>
       </div>
 
       <!-- Helmet Details -->
-      <div class="col-lg-6 product-details">
-        <h2>Premium Motorcycle Helmet</h2>
-        <p><strong>Brand:</strong> AGV REPLICA</p>
-        <p><strong>Price:</strong> ₹7,000</p>
-        <p><strong>Description:</strong> Stylish and durable helmet with enhanced safety features. Perfect for daily riders and long journeys. Lightweight design with a sleek finish and breathable padding for extra comfort.</p>
+      <!-- Replace this part inside your existing .product-details section -->
 
-        <div class="mb-3">
-            <option selected>Size: M</option>
-          </select>
-        </div>
+<div class="col-lg-6 product-details">
+  <h2>Premium Motorcycle Helmet</h2>
+  <p><strong>Brand:</strong> AGV REPLICA</p>
+  <p><strong>Price:</strong> ₹7,000</p>
+  <p><strong>Description:</strong> Stylish and durable helmet with enhanced safety features. Perfect for daily riders and long journeys. Lightweight design with a sleek finish and breathable padding for extra comfort.</p>
 
-        <a href="helmet1-checkout.html" class="btn btn-red btn-lg mt-3"><i class="fas fa-credit-card me-2"></i>Proceed to Checkout</a>
-      </div>
-    </div>
+  <div class="mb-3">
+      <option selected>Size: M</option>
   </div>
+
+  <!-- STOCK OUT MESSAGE -->
+  <div class="alert alert-danger fw-bold mt-3" role="alert">
+    ❌ Currently Out of Stock
+  </div>
+</div>
+
 
   <!-- JavaScript for image switching -->
   <script>

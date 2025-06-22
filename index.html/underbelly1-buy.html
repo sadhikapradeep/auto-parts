@@ -19,6 +19,26 @@
       justify-content: space-between;
       align-items: center;
     }
+.main-menu {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    justify-items: center;
+    text-align: center;
+    padding: 10px;
+  }
+
+  .main-menu .menu-links {
+    grid-column: 1 / -1; /* Span full width if needed */
+    display: contents; /* Flatten nested flex container if used */
+  }
+
+  .main-menu a {
+    min-width: unset;
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+  }
 
     .logo {
       font-size: 1.8rem;
