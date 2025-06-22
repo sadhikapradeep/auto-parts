@@ -135,6 +135,21 @@
   text-align: center;
 }
 
+/* Click bounce animation */
+@keyframes clickBounce {
+  0%   { transform: scale(1); }
+  25%  { transform: scale(1.1); }
+  50%  { transform: scale(0.95); }
+  75%  { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.main-menu a.animate-click {
+  animation: clickBounce 0.4s ease;
+}
+
+    
+
 .main-menu .menu-links {
   display: flex;
   flex-wrap: wrap;
@@ -216,7 +231,7 @@
     <a href="exhaust.html">EXHAUST</a>
     <a href="bendpipe.html">BENDPIPES</a>
     <a href="visor.html">VISORS</a>
-    <a href="tank.html">TANKS</a>
+    <a href="tank.html">TANK KITS</a>
   </div>
 </div>
 
@@ -319,6 +334,18 @@
   </footer>
 
   <!-- Bootstrap JS Bundle -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js">
+  </script>
+
+  <script>
+  document.querySelectorAll('.main-menu a').forEach(link => {
+    link.addEventListener('click', () => {
+      link.classList.remove('animate-click'); // Reset class
+      void link.offsetWidth; // Trigger reflow
+      link.classList.add('animate-click'); // Re-add to play animation
+    });
+  });
+</script>
+
 </body>
 </html>

@@ -128,14 +128,14 @@
         <img src="../images/bendpipe3.jpg" alt="V3 COMBO" width="80" class="me-3">
         <div>
           <strong>DUKE 250 BS6 FULL SYSTEM</strong><br>
-          ₹<span id="unitPrice">2,900.00</span>
+          ₹<span id="unitPrice">2,200.00</span>
         </div>
       </div>
       <hr>
-      <p>Subtotal: <strong>₹<span id="subtotal">2,900.00</span></strong></p>
+      <p>Subtotal: <strong>₹<span id="subtotal">2,200.00</span></strong></p>
       <p>Shipping charge: ₹<span id="taxes">200.00</span></p>
       <hr>
-      <h5>Total: <strong>₹<span id="total">2,900.00</span></strong></h5>
+      <h5>Total: <strong>₹<span id="total">2,400.00</span></strong></h5>
     </div>
   </div>
 </div>
@@ -145,27 +145,21 @@
   <input type="hidden" name="user_name" id="user_name">
   <input type="hidden" name="user_email" id="user_email">
   <input type="hidden" name="product_name" value="DUKE 250 BS6 FULL SYSTEM">
-  <input type="hidden" name="total_price" value="2900.00">
+  <input type="hidden" name="total_price" value="2400.00">
   <input type="hidden" name="payment_method" id="payment_method">
   <input type="hidden" name="_next" value="confirmation.html">
 </form>
 
 <script>
-  const urlParams = new URLSearchParams(window.location.search);
-  const qty = parseInt(urlParams.get('qty')) || 1;
-  const unitPrice = 2900;
-  const taxPerItem = 200;
-const subtotal = unitPrice * qty;
-const shipping = taxPerItem * qty; // Multiply by quantity
-const total = subtotal + shipping;
+  const qty = 1;
+  const unitPrice = 2200;
+  const tax = 200;
+  const total = unitPrice + tax;
 
-document.getElementById("subtotal").textContent = subtotal.toFixed(2);
-document.getElementById("taxes").textContent = shipping.toFixed(2);
-document.getElementById("total").textContent = total.toFixed(2);
-document.querySelector("input[name='total_price']").value = total.toFixed(2);
-
-
-
+  document.getElementById("subtotal").textContent = unitPrice.toFixed(2);
+  document.getElementById("taxes").textContent = tax.toFixed(2);
+  document.getElementById("total").textContent = total.toFixed(2);
+  document.getElementById("total_price").value = total.toFixed(2);
 
   function showPaymentMethods() {
     document.getElementById("paymentSection").classList.remove("d-none");
@@ -179,58 +173,20 @@ document.querySelector("input[name='total_price']").value = total.toFixed(2);
     document.getElementById("qrSection").style.display = method === "UPI" ? "block" : "none";
   }
 
-  
   function markPaid() {
-    // Optional alert for confirmation (can be removed)
-    // alert("UPI Payment confirmed!");
-
-    submitPayment(); // This will redirect to the confirmation page
-    
-  function submitOrder() {
-    const data = {
-      firstName: document.getElementById('firstName').value,
-      lastName: document.getElementById('lastName').value,
-      email: document.getElementById('email').value,
-      phone: document.getElementById('phone').value,
-      address: document.getElementById('address').value,
-      city: document.getElementById('city').value,
-      state: document.getElementById('state').value,
-      pin: document.getElementById('pin').value,
-      payment: document.getElementById('paymentMethod').value
-    };
-
-    fetch('http://localhost:3000/send-email', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data)
-    })
-    .then(response => {
-      if (!response.ok) throw new Error('Failed to send email');
-      return response.json();
-    })
-    .then(result => {
-      // ✅ Redirect to confirmation page
-      window.location.href = 'confirmation.html';
-    })
-    .catch(error => {
-      alert('Something went wrong: ' + error.message);
-    });
+    alert("UPI Payment confirmed!");
+    submitPayment();
   }
-
-
-  }
-
-
-
-
 
   function submitPayment() {
-    const form = document.getElementById("deliveryForm");
-    const inputs = form.querySelectorAll("input, select");
+    const firstName = document.getElementById("firstName").value.trim();
+    const lastName = document.getElementById("lastName").value.trim();
+    const email = document.getElementById("email").value.trim();
 
-    const email = document.getElementById("email").value;
-    const firstName = inputs[1].value;
-    const lastName = inputs[2].value;
+    if (!firstName || !email) {
+      alert("Please enter required details before proceeding.");
+      return;
+    }
 
     document.getElementById("user_name").value = `${firstName} ${lastName}`;
     document.getElementById("user_email").value = email;

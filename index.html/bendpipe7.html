@@ -93,7 +93,20 @@
       gap: 10px;
       margin-top: 20px;
     }
-
+ body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('../images/neptune3.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      filter: blur(12px) brightness(0.6);
+      z-index: -1;
+    }
     .qty-control input {
       width: 60px;
       text-align: center;
@@ -127,12 +140,12 @@
     <div class="container-fluid justify-content-center">
       <ul class="navbar-nav d-flex flex-wrap justify-content-center gap-3">
         <li class="nav-item"><a class="nav-link" href="index.html">HOME</a></li>
-        <li class="nav-item"><a class="nav-link active" href="#">HELMETS</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">UNDERBELLY</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">SEAT COWL</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">EXHAUST</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">MUDGUARD</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">TAIL KITS</a></li>
+        <li class="nav-item"><a class="nav-link active" href="helmets.html">HELMETS</a></li>
+        <li class="nav-item"><a class="nav-link" href="underbelly.html">UNDERBELLY</a></li>
+        <li class="nav-item"><a class="nav-link" href="seatcowl.html">SEAT COWL</a></li>
+        <li class="nav-item"><a class="nav-link" href="exhaust.html">EXHAUST</a></li>
+        <li class="nav-item"><a class="nav-link" href="mudguard.html">MUDGUARD</a></li>
+        <li class="nav-item"><a class="nav-link" href="tailkit.html">TAIL KITS</a></li>
       </ul>
     </div>
   </nav>
@@ -150,8 +163,8 @@
       <div class="col-lg-6 product-details">
         <h2>DUKE BS4 LINK PIPE</h2>
         <p><strong>Brand:</strong> Neptune</p>
-        <p><strong>Price:</strong> ₹2,999</p>
-        <p><strong>Description:</strong> Crafted from premium-grade metal alloys, our NS Underseat Bend Pipe offers excellent durability, resistance to corrosion, and precision bends for optimal exhaust flow. Ideal for performance-focused riders and compatible with NS models. Available in various custom-fit angles.</p>
+        <p><strong>Price:</strong> ₹1,800</p>
+        <p><strong>Description:</strong> curved section of pipe used to change the direction of flow in exhaust systems. It improves airflow, enhances engine performance, and supports custom bike modifications with a sleek, efficient design.</p>
 
         <ul class="list-unstyled mt-4">
           <li>🚚 <strong>Delivery Within 4–8 Days</strong></li>
@@ -179,7 +192,7 @@
   </div>
 
  <script>
-  const unitPrice = 2999;
+  const unitPrice = 1800;
 
   function changeQty(amount) {
     const qtyInput = document.getElementById("qtyInput");
@@ -198,7 +211,7 @@
 
   function goToCheckout() {
     const qty = document.getElementById("qtyInput").value;
-    window.location.href = `bendpipe1-checkout.html?qty=${qty}`;
+    window.location.href = `bendpipe7-checkout.html?qty=${qty}`;
   }
 
   function updateMainImage(thumbnail) {
