@@ -150,15 +150,19 @@
 </form>
 
 <script>
-  const qty = 1;
+  const urlParams = new URLSearchParams(window.location.search);
+  const qty = parseInt(urlParams.get('qty')) || 1;
   const unitPrice = 2500;
-  const tax = 200;
-  const total = unitPrice + tax;
+  const taxPerItem = 200;
 
-  document.getElementById("subtotal").textContent = unitPrice.toFixed(2);
+  const subtotal = unitPrice * qty;
+  const tax = taxPerItem ;
+  const total = subtotal + tax;
+
+  document.getElementById("subtotal").textContent = subtotal.toFixed(2);
   document.getElementById("taxes").textContent = tax.toFixed(2);
   document.getElementById("total").textContent = total.toFixed(2);
-  document.getElementById("total_price").value = total.toFixed(2);
+  document.querySelector("input[name='total_price']").value = total.toFixed(2);
 
   function showPaymentMethods() {
     document.getElementById("paymentSection").classList.remove("d-none");
@@ -172,20 +176,25 @@
     document.getElementById("qrSection").style.display = method === "UPI" ? "block" : "none";
   }
 
+  
   function markPaid() {
-    alert("UPI Payment confirmed!");
-    submitPayment();
+    // Optional alert for confirmation (can be removed)
+    // alert("UPI Payment confirmed!");
+
+    submitPayment(); // This will redirect to the confirmation page
   }
 
-  function submitPayment() {
-    const firstName = document.getElementById("firstName").value.trim();
-    const lastName = document.getElementById("lastName").value.trim();
-    const email = document.getElementById("email").value.trim();
 
-    if (!firstName || !email) {
-      alert("Please enter required details before proceeding.");
-      return;
-    }
+
+
+
+  function submitPayment() {
+    const form = document.getElementById("deliveryForm");
+    const inputs = form.querySelectorAll("input, select");
+
+    const email = document.getElementById("email").value;
+    const firstName = inputs[1].value;
+    const lastName = inputs[2].value;
 
     document.getElementById("user_name").value = `${firstName} ${lastName}`;
     document.getElementById("user_email").value = email;
