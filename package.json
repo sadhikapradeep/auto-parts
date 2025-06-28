@@ -17,5 +17,8 @@
     "url": "https://github.com/sadhikapradeep/auto-parts/issues"
   },
   "homepage": "https://github.com/sadhikapradeep/auto-parts#readme",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "dotenv": "^16.5.0"
+  }
 }

@@ -3,7 +3,7 @@ const nodemailer = require('nodemailer');
 const cors = require('cors');
 
 const app = express();
-const PORT =process.env.PORT || 3000;
+const PORT = process.env.PORT || 3000;
 
 app.use(cors());
 app.use(express.json());
@@ -53,6 +53,7 @@ KZ KIT Team`
     res.send('Email sent successfully');
   });
 });
+require('dotenv').config();
 
 app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}`);
